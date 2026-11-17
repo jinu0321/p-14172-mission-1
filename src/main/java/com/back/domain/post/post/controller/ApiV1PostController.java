@@ -41,4 +41,17 @@ public class ApiV1PostController {
                 new PostDto(post)
         );
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public RsData<Void> delete(@PathVariable int id) {
+        Post post = postService.findById(id).get();
+
+        postService.delete(post);
+
+        return new RsData<>(
+                "200-1",
+                "%d번 글이 삭제되었습니다.".formatted(id)
+        );
+    }
 }
