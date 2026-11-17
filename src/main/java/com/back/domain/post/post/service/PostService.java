@@ -42,4 +42,8 @@ public class PostService {
     public void flush() {
         postRepository.flush();
     }
+
+    public void deleteComment(Post post, PostComment postComment) {
+        post.deleteComment(postComment);
+    }
 }
